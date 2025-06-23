@@ -40,7 +40,7 @@ def load_chat_history():
     return []
 
 def save_chat_history(history):
-    with open(CHAT_HISTORY_FILE, 'w') as f:
+    with open(CHAT_HISTORY_FILE,'w') as f:
         json.dump(history, f)
 
 # Define the default route to return the index.html file
@@ -154,5 +154,6 @@ def chat():
         }), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
 
